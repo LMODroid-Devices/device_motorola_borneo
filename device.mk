@@ -1,5 +1,5 @@
 #
-# SPDX-FileCopyrightText: 2022-2024 The LineageOS Project
+# SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -29,12 +29,19 @@ PRODUCT_PACKAGES += \
     init.mmi.overlay.rc \
     init.recovery.touch.rc
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.lineage
+
 # LiveDisplay
 $(call soong_config_set,livedisplay_sysfs,enable_ab,true)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+PRODUCT_PACKAGES += \
+    FrameworksResDevice \
+    LineagePlatformDevice \
+    SystemUIResDevice \
+    WifiResDevice
 
 # Shipping API level
 BOARD_SHIPPING_API_LEVEL := 29
